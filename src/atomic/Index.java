@@ -13,23 +13,24 @@ public class Index {
         return a.incrementAndGet();
     }
 
+
+
     public static void main(String[] args) {
         Index index = new Index();
-         for(int i=0 ;i< 50;i++){
+         for(int i=0 ;i< 2;i++){
              new Thread(new Runnable() {
                  @Override
                  public void run() {
-                     try {
-                         Thread.sleep(1000);
-                     } catch (InterruptedException e) {
-                         e.printStackTrace();
+                     while (true){
+                         try {
+                             Thread.sleep(100);
+                         } catch (InterruptedException e) {
+                         }
+                         System.out.println(Thread.currentThread().getName()+"="+index.getNext());
                      }
-                     System.out.println("="+index.getNext());
                  }
              }).start();
-
          }
-
     }
 
 
